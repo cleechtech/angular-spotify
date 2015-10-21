@@ -645,7 +645,7 @@ Spotify.removeUserTracks('0udZHhCi7p1YzMlvI4fXoK,3SF5puV5eb6bgRSxBeMOk9').then(f
 ###Authentication
 ####Login
 Will open login window. Requires user to initiate as it will open a pop up window.
-Requires client id, callback uri and scope to be set in config.
+Requires client id, callback uri and scope to be set in config. Login returns a promise with the token.
 ```javascript
 Spotify.login();
 ```
@@ -653,7 +653,10 @@ Spotify.login();
 Example:
 ```javascript
 $scope.login = function () {
-  Spotify.login();
+  // opens a popup window and resolves with auth token
+  Spotify.login().then(function(token){
+    console.log(token);
+  });
 };
 ```
 
